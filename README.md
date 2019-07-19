@@ -5,10 +5,15 @@ A renaming, continuation/reimagining, and vast improvement of NCU (NCursesUtils)
 ## But why?
 Glad you asked. Ncurses can be a pain to work with, but BEN is here to help.
 
-With BEN, you can quickly get snazzy command line interfaces up and running quickly with minimal boilerplate code.
+With BEN, you can quickly get snazzy command line interfaces (CLI) up and running quickly with minimal boilerplate code.
+
+But why even CLIs, you ask? They run on basically any hardware specs and can be run without a display server (X, Wayland, etc.), which means you can have fancy interfaces remotely, such as over SSH. Plus, there is even mouse support.
 
 ## But how?
 Also a great question, theoretical person reading me. I haven't exactly built anything else out yet, so if your still reading this, I'm currently making magic happen or I've given up :/
+
+#### High level explanation
+BEN will essentially wrap around ncurses, an existing library that handles all the actual command line manipulation, making it easier to use.
 
 ## Count me in!
 Your excitement for command line interfaces pleases me!
