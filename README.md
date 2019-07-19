@@ -1,6 +1,6 @@
 # BEN - Better, Easier Ncurses
 
-A renaming, continuation, and vast improvement of NCU (NCursesUtils). While NCU is a super cool acronym, BEN is my name and NCU ended up being not so much a collection of utilities, but rather a complete wrapper of ncurses.
+A renaming, continuation/reimagining, and vast improvement of NCU (NCursesUtils). While NCU is a super cool acronym, BEN is my name and NCU ended up being not so much a collection of utilities, but rather a complete wrapper of ncurses.
 
 ## But why?
 Glad you asked. Ncurses can be a pain to work with, but BEN is here to help.
