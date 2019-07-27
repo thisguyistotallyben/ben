@@ -68,16 +68,13 @@ int main() {
 	Ben ben;
 
 	ben.start();
+	std::cin.ignore();
 	ben.createWidget(
 		"box1",
 		BEN_BORDERED_BOX,
 		10, 10,
 		0, 0
 	);
-
-	//ben.widget("box1").display();
-
-	BenVisual::Instance()->check();
 
 	std::cin.ignore();
 
