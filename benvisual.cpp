@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stddef.h>
+#include <curses.h>
 #include "ben.h"
 
 
@@ -16,10 +17,18 @@ BenVisual* BenVisual::Instance() {
 
 void BenVisual::startCurses() {
 	std::cout << "ncurses starting\n";
+	initscr();
+	raw();
+	keypad(stdscr, TRUE);
+	start_color();
+	init_pair(1, COLOR_BLACK, COLOR_WHITE);
+	noecho();
+	refresh();
 }
 
 void BenVisual::stopCurses() {
 	std::cout << "ncurses stopping\n";
+	endwin();
 }
 
 void BenVisual::check() {

@@ -79,6 +79,8 @@ int main() {
 
 	BenVisual::Instance()->check();
 
+	std::cin.ignore();
+
 	ben.stop();
 
 	return 0;
