@@ -79,6 +79,7 @@ int main() {
 
 	BenVisual::Instance()->check();
 
+	ben.stop();
 
 	return 0;
 }

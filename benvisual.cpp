@@ -14,6 +14,14 @@ BenVisual* BenVisual::Instance() {
 	return bv_Singleton_Instance;
 }
 
+void BenVisual::startCurses() {
+	std::cout << "ncurses starting\n";
+}
+
+void BenVisual::stopCurses() {
+	std::cout << "ncurses stopping\n";
+}
+
 void BenVisual::check() {
 	std::cout << "suh, doo\n";
 }

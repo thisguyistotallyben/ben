@@ -4,10 +4,12 @@
 
 void Ben::start() {
 	std::cout << "greetings, planet\n";
+	BenVisual::Instance()->startCurses();
 }
 
 void Ben::stop() {
 	std::cout << "farewell, planet\n";
+	BenVisual::Instance()->stopCurses();
 }
 
 

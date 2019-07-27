@@ -11,3 +11,6 @@ benvisual.o: ben.h benvisual.cpp
 
 driver.o: driver.cpp ben.h
 	g++ -c driver.cpp
+
+clean:
+	rm *.o driver
