@@ -10,7 +10,7 @@ With BEN, you can quickly get snazzy command line interfaces (CLI) up and runnin
 But why even CLIs, you ask? They run on basically any hardware specs and can be run without a display server (X, Wayland, etc.), which means you can have fancy interfaces remotely, such as over SSH. Plus, there is even mouse support.
 
 ## But how?
-Also a great question, theoretical person reading me. I haven't exactly built anything else out yet, so if your still reading this, I'm currently making magic happen or I've given up :/
+Also a great question, theoretical person reading me. I haven't exactly built anything else out yet, so if your still reading this, I'm currently making magic happen. Check out the dev branch to see what I'm up to.
 
 #### High level explanation
 BEN will essentially wrap around ncurses, an existing library that handles all the actual command line manipulation, making it easier to use.
