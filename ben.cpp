@@ -18,9 +18,22 @@ BenWidget Ben::createWidget(std::string lookup, BenWidgetType, int sizex, int si
 	BenEvent event;
 	event.eventType = CREATE;
 	BenVisual::Instance()->addEvent(event);
-	return BenWidget();
+	return BenWidget(); // probably make this return the actual widget, not some dummy nothing
 }
 
 BenWidget Ben::widget(std::string lookup) {
 	return BenWidget();
+}
+
+void BenWidget::show() {
+	BenEvent event;
+	event.eventType = SHOW_HIDE;
+	event.visible = true;
+	sendEvent(event);
+}
+
+
+// litle helper boi
+void sendEvent(Event e) {
+	BenVisual::Instance()->addEvent(e);
 }

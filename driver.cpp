@@ -7,7 +7,8 @@ Create widgets
 ben.createWidget('box1', ben::BORDERED_BOX, 10, 10, 0, 0);
 
 So you have a box and you want to display it...
-ben.widget('box1').display();
+ben.widget('box1')->display();
+ben.display('box1');
 
 Hide it?
 ben.widget('box1').hide();
@@ -71,7 +72,7 @@ int main() {
 	std::cin.ignore();
 	ben.createWidget(
 		"box1",
-		BEN_BORDERED_BOX,
+		BEN_BOX,
 		10, 10,
 		0, 0
 	);

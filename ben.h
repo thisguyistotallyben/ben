@@ -2,10 +2,40 @@
 #include <queue>
 #include <map>
 #include <thread>
+#include <curses.h>
+#include <panel.h>
 
 
 enum BenWidgetType {
-	BEN_BORDERED_BOX
+	BEN_BOX
+};
+
+enum BenBorderType {
+	BEN_FULL,
+	BEN_TEXT,
+	BEN_NO_BORDER
+};
+
+enum BenEventType {
+	CREATE,
+	DESTROY,
+	MODIFY,
+	SHOW_HIDE,
+	DIE
+};
+
+
+struct BenEvent {
+	BenEventType eventType;
+
+	std::string lookup;
+	BenBorderType borderType;
+	int sizex;
+	int sizey;
+	int posx;
+	int posy;
+
+	bool visible;
 };
 
 
@@ -18,20 +48,13 @@ public:
 	int sizey;
 	int posx;
 	int posy;
-};
 
+	bool visible;
 
-enum BenEventType {
-	CREATE,
-	DESTROY,
-	MOVE,
-	DIE
-};
+	WINDOW *win;
+	PANEL *panel;
 
-
-class BenEvent {
-public:
-	BenEventType eventType;
+	void show();
 };
 
 
@@ -45,6 +68,8 @@ public:
 	void addEvent(BenEvent event);
 	bool hasWaitingEvent();
 	BenEvent getNextEvent();
+
+	void insertWidget(BenWidget* widget);
 
 	bool isActive();
 private:

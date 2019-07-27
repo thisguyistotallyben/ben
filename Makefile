@@ -1,7 +1,7 @@
 all: driver
 
 driver: ben.o driver.o benvisual.o
-	g++ -o driver ben.o driver.o benvisual.o -lncurses -pthread
+	g++ -o driver ben.o driver.o benvisual.o -lncurses -lpanel -pthread
 
 ben.o: ben.h ben.cpp
 	g++ -c ben.cpp

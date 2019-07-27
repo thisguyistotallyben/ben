@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stddef.h>
 #include <curses.h>
+#include <panel.h>
 #include <thread>
 #include <mutex>
 #include <condition_variable>
@@ -20,6 +21,7 @@ bool hasEvents() {
 void bvQueueHandler() {
 	BenVisual* bv = BenVisual::Instance();
 	bool guessilldie = false;
+	BenWidget *widget;
 
 	while(1) {
 		std::unique_lock<std::mutex> lck(mtx);
@@ -28,6 +30,46 @@ void bvQueueHandler() {
 		while (bv->hasWaitingEvent()) {
 			BenEvent event = bv->getNextEvent();
 			switch(event.eventType) {
+				case CREATE:
+					widget = new BenWidget();
+					widget->lookup = event.lookup;
+					widget->posx = event.posx;
+					widget->posy = event.posy;
+					// finish filling in actual info
+
+					widget->win = newwin(
+						event.sizey,
+						event.sizex,
+						event.posy,
+						event.posx
+					);
+					wrefresh(widget->win);
+
+					widget->panel = new_panel(widget->win);
+					hide_panel(widget->panel);
+
+					bv->insertWidget(widget);
+
+					switch(event.borderType) {
+						case BEN_BOX:
+							box(widget->win, 0, 0);
+							break;
+						default: break;
+					}
+					// create new widget here
+					break;
+				case DESTROY:
+					// destroy widget here
+					break;
+				case MODIFY:
+					// change properties here
+					break;
+				case SHOW_HIDE:
+					widget = bv->getElement(event.lookup);
+					PANEL *p = widget->panel;
+					if (p != NULL) show_panel(p);
+					// show or hide the widget here
+					break;
 				case DIE:
 					guessilldie = true;
 					break;
@@ -116,4 +158,8 @@ void BenVisual::stopQueueHandler() {
 	dieEvent.eventType = DIE;
 	addEvent(dieEvent);
 	queueHandlerThread->join();
+}
+
+void BenVisual::insertWidget(BenWidget* widget) {
+	widgets.insert(make_pair(widget->lookup, widget));
 }
