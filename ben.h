@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <queue>
 #include <map>
@@ -17,9 +19,6 @@ enum BenBorderType {
 };
 
 enum BenEventType {
-	CREATE,
-	DESTROY,
-	MODIFY,
 	SHOW_HIDE,
 	DIE
 };
@@ -59,37 +58,6 @@ struct BenEvent {
 };
 
 
-class BenVisual {
-public:
-	static BenVisual* Instance();
-
-	void startCurses();
-	void stopCurses();
-
-	void addEvent(BenEvent event);
-	bool hasWaitingEvent();
-	BenEvent getNextEvent();
-
-	void insertWidget(BenWidget* widget);
-	BenWidget* getWidget(std::string lookup);
-
-	bool isActive();
-	void updateView();
-private:
-	BenVisual() {};
-	BenVisual(BenVisual const&) {};
-	BenVisual& operator=(BenVisual const&) {};
-	static BenVisual* bv_Singleton_Instance;
-	
-	std::map<std::string, BenWidget*> widgets;
-	std::queue<BenEvent> events;
-
-	std::thread* queueHandlerThread;
-	void stopQueueHandler();
-	bool enabled;
-};
-
-
 class Ben {
 public:
 	void start();
@@ -97,4 +65,5 @@ public:
 
 	BenWidget createWidget(std::string lookup, BenWidgetType, int sizex, int sizey, int posx, int posy);
 	BenWidget widget(std::string lookup);
+    void hideCursor();
 };

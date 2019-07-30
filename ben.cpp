@@ -1,42 +1,60 @@
 #include <iostream>
 #include "ben.h"
-
+#include "benview.h"
 
 void Ben::start() {
 	std::cout << "greetings, planet\n";
-	BenVisual::Instance()->startCurses();
+	BenView::Instance()->startCurses();
 }
 
 void Ben::stop() {
 	std::cout << "farewell, planet\n";
-	BenVisual::Instance()->stopCurses();
+	BenView::Instance()->stopCurses();
 }
 
+void Ben::hideCursor() {
+    BenView::Instance()->hideCursor();
+}
 
-BenWidget Ben::createWidget(std::string lookup, BenWidgetType, int sizex, int sizey, int posx, int posy) {
-	std::cout << "creating a widget\n";
-	BenEvent event;
-	event.eventType = CREATE;
-	event.lookup = lookup;
-	event.sizex = sizex;
-	event.sizey = sizey;
-	event.posx = posx;
-	event.posy = posy;
-	BenVisual::Instance()->addEvent(event);
-	return BenWidget(); // probably make this return the actual widget, not some dummy nothing
+BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int sizex, int sizey, int posx, int posy) {
+	BenWidget* widget = new BenWidget();
+	widget->lookup = lookup;
+	widget->posx = posx;
+	widget->posy = posy;
+	// finish filling in actual info
+
+	widget->win = newwin(
+		sizey,
+		sizex,
+		posy,
+		posx
+	);
+	wrefresh(widget->win);
+
+	widget->panel = new_panel(widget->win);
+	hide_panel(widget->panel);
+
+	BenView::Instance()->insertWidget(widget);
+
+	switch (widgetType) {
+		case BEN_BOX:
+			box(widget->win, 0, 0);
+			break;
+		default: break;
+	}
+
+    return *widget;
 }
 
 BenWidget Ben::widget(std::string lookup) {
-	BenWidget* w = BenVisual::Instance()->getWidget(lookup);
-	std::cout << "in widget: " << w->lookup << std::endl;
+	BenWidget* w = BenView::Instance()->getWidget(lookup);
 	return *w;
 }
 
 void BenWidget::show() {
-	std::cout << "in show: " << this->lookup;
 	BenEvent event;
 	event.eventType = SHOW_HIDE;
 	event.visible = true;
 	event.widget = this;
-	BenVisual::Instance()->addEvent(event);
+	BenView::Instance()->addEvent(event);
 }

@@ -69,7 +69,8 @@ int main() {
 	Ben ben;
 
 	ben.start();
-	std::cin.ignore();
+    ben.hideCursor();
+	// std::cin.ignore();
 	ben.createWidget(
 		"box1",
 		BEN_BOX,
@@ -77,7 +78,7 @@ int main() {
 		0, 0
 	);
 
-	std::cin.ignore();
+	//std::cin.ignore();
 	ben.widget("box1").show();
 	std::cin.ignore();
 
