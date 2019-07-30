@@ -65,9 +65,14 @@ void bvQueueHandler() {
 					// change properties here
 					break;
 				case SHOW_HIDE:
-					widget = bv->getElement(event.lookup);
-					PANEL *p = widget->panel;
-					if (p != NULL) show_panel(p);
+					widget = event.widget;
+					std::cout << "yeah this here: " << widget->lookup << std::endl;
+
+					if (widget->panel != NULL) {
+						show_panel(widget->panel);
+					}
+
+					bv->updateView();
 					// show or hide the widget here
 					break;
 				case DIE:
@@ -112,7 +117,6 @@ BenVisual* BenVisual::Instance() {
 }
 
 void BenVisual::startCurses() {
-/*
 	std::cout << "ncurses starting\n";
 	initscr();
 	raw();
@@ -121,7 +125,6 @@ void BenVisual::startCurses() {
 	init_pair(1, COLOR_BLACK, COLOR_WHITE);
 	noecho();
 	refresh();
-*/
 
 	enabled = true;
 	queueHandlerThread = new std::thread(bvQueueHandler);
@@ -161,5 +164,23 @@ void BenVisual::stopQueueHandler() {
 }
 
 void BenVisual::insertWidget(BenWidget* widget) {
-	widgets.insert(make_pair(widget->lookup, widget));
+	std::cout << "in insert: " << widget->lookup << std::endl;
+	widgets[widget->lookup] = widget;
+	std::cout << "widgets size: " << widgets.size();
+
+	for (std::map<std::string, BenWidget*>::iterator it = widgets.begin(); it != widgets.end(); it++) {
+		std::cout << "you bet: " << it->first << std::endl;
+	}
+}
+
+void BenVisual::updateView() {
+	update_panels();
+	doupdate();
+}
+
+BenWidget* BenVisual::getWidget(std::string lookup) {
+	std::cout << "this is the lookup: " << lookup << std::endl;
+	BenWidget* widget = widgets[lookup];
+	std::cout << "this is a thing: " << widget->lookup << std::endl;
+	return widget;
 }

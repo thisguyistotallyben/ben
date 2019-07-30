@@ -25,20 +25,6 @@ enum BenEventType {
 };
 
 
-struct BenEvent {
-	BenEventType eventType;
-
-	std::string lookup;
-	BenBorderType borderType;
-	int sizex;
-	int sizey;
-	int posx;
-	int posy;
-
-	bool visible;
-};
-
-
 class BenWidget {
 public:
 	std::string lookup;
@@ -58,6 +44,21 @@ public:
 };
 
 
+struct BenEvent {
+	BenEventType eventType;
+
+	BenWidget* widget;
+	std::string lookup;
+	BenBorderType borderType;
+	int sizex;
+	int sizey;
+	int posx;
+	int posy;
+
+	bool visible;
+};
+
+
 class BenVisual {
 public:
 	static BenVisual* Instance();
@@ -70,8 +71,10 @@ public:
 	BenEvent getNextEvent();
 
 	void insertWidget(BenWidget* widget);
+	BenWidget* getWidget(std::string lookup);
 
 	bool isActive();
+	void updateView();
 private:
 	BenVisual() {};
 	BenVisual(BenVisual const&) {};

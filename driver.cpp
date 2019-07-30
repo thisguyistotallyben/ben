@@ -78,6 +78,8 @@ int main() {
 	);
 
 	std::cin.ignore();
+	ben.widget("box1").show();
+	std::cin.ignore();
 
 	ben.stop();
 
