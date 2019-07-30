@@ -33,16 +33,16 @@ void bvQueueHandler() {
 				case SHOW_HIDE:
 					widget = event.widget;
 
-                    if (event.visible) {
-					    if (widget->panel != NULL) {
-						    show_panel(widget->panel);
-					    }
-                    }
-                    else {
-                        if (widget->panel != NULL) {
-						    hide_panel(widget->panel);
-					    }
-                    }
+					if (event.visible) {
+						if (widget->panel != NULL) {
+							show_panel(widget->panel);
+						}
+					}
+					else {
+						if (widget->panel != NULL) {
+							hide_panel(widget->panel);
+						}
+					}
 
 					bv->updateView();
 					break;
@@ -98,7 +98,7 @@ BenEvent BenView::getNextEvent() {
 }
 
 void BenView::addEvent(BenEvent event) {
-    //std::unique_lock<std::mutex> lck(mtx);
+	//std::unique_lock<std::mutex> lck(mtx);
 	events.push(event);
 	cv.notify_one();
 }
@@ -124,7 +124,7 @@ void BenView::updateView() {
 }
 
 void BenView::hideCursor() {
-    curs_set(0);
+	curs_set(0);
 }
 
 BenWidget* BenView::getWidget(std::string lookup) {

@@ -13,7 +13,7 @@ void Ben::stop() {
 }
 
 void Ben::hideCursor() {
-    BenView::Instance()->hideCursor();
+	BenView::Instance()->hideCursor();
 }
 
 BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int sizex, int sizey, int posx, int posy) {
@@ -43,7 +43,7 @@ BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int si
 		default: break;
 	}
 
-    return *widget;
+	return *widget;
 }
 
 BenWidget Ben::widget(std::string lookup) {

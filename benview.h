@@ -18,7 +18,7 @@ public:
 
 	bool isActive();
 	void updateView();
-    void hideCursor();
+	void hideCursor();
 private:
 	BenView() {};
 	BenView(BenView const&) {};
