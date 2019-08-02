@@ -1,14 +1,18 @@
 #include <iostream>
+#include "ben_common.h"
 #include "ben.h"
-#include "benview.h"
+#include "ben_view.h"
+#include "ben_server.h"
 
 void Ben::start() {
 	std::cout << "greetings, planet\n";
 	BenView::Instance()->startCurses();
+	BenServer::Instance()->serve();
 }
 
 void Ben::stop() {
 	std::cout << "farewell, planet\n";
+	BenServer::Instance()->stop();
 	BenView::Instance()->stopCurses();
 }
 
@@ -16,32 +20,17 @@ void Ben::hideCursor() {
 	BenView::Instance()->hideCursor();
 }
 
-BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int sizex, int sizey, int posx, int posy) {
+BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int sizeX, int sizeY, int posX, int posY) {
 	BenWidget* widget = new BenWidget();
 	widget->lookup = lookup;
-	widget->posx = posx;
-	widget->posy = posy;
-	// finish filling in actual info
+	widget->sizeX = sizeX;
+	widget->sizeY = sizeY;
+	widget->posX = posX;
+	widget->posY = posY;
 
-	widget->win = newwin(
-		sizey,
-		sizex,
-		posy,
-		posx
-	);
-	wrefresh(widget->win);
-
-	widget->panel = new_panel(widget->win);
-	hide_panel(widget->panel);
+	widget->type = widgetType;
 
 	BenView::Instance()->insertWidget(widget);
-
-	switch (widgetType) {
-		case BEN_BOX:
-			box(widget->win, 0, 0);
-			break;
-		default: break;
-	}
 
 	return *widget;
 }
@@ -49,12 +38,4 @@ BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int si
 BenWidget Ben::widget(std::string lookup) {
 	BenWidget* w = BenView::Instance()->getWidget(lookup);
 	return *w;
-}
-
-void BenWidget::show() {
-	BenEvent event;
-	event.eventType = SHOW_HIDE;
-	event.visible = true;
-	event.widget = this;
-	BenView::Instance()->addEvent(event);
 }

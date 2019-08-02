@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ben.h"
+#include <map>
+#include "ben_common.h"
 
 class BenView {
 public:
@@ -9,11 +10,9 @@ public:
 	void startCurses();
 	void stopCurses();
 
-	void addEvent(BenEvent event);
-	bool hasWaitingEvent();
-	BenEvent getNextEvent();
-
 	void insertWidget(BenWidget* widget);
+	void showWidget(BenWidget* widget);
+	void hideWidget(BenWidget* widget);
 	BenWidget* getWidget(std::string lookup);
 
 	bool isActive();
@@ -24,11 +23,8 @@ private:
 	BenView(BenView const&) {};
 	BenView& operator=(BenView const&) {};
 	static BenView* bv_Singleton_Instance;
-	
-	std::map<std::string, BenWidget*> widgets;
-	std::queue<BenEvent> events;
 
-	std::thread* queueHandlerThread;
-	void stopQueueHandler();
+	std::map<std::string, BenWidget*> widgets;
 	bool enabled;
+
 };
