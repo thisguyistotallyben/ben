@@ -4,6 +4,7 @@
 #include "ben_view.h"
 #include "ben_server.h"
 
+
 void Ben::start() {
 	std::cout << "greetings, planet\n";
 	BenView::Instance()->startCurses();

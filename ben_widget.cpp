@@ -1,6 +1,7 @@
 #include "ben_common.h"
 #include "ben_server.h"
 
+
 void BenWidget::show() {
 	BenEvent* event = new BenEvent();
 	event->eventType = SHOW_HIDE;

@@ -27,8 +27,8 @@ void BenServer::ThreadedEventHandler() {
 	bool cont = true;
 
 	while(cont) {
-		std::unique_lock<std::mutex> lck(mtx);
-		cv.wait(lck, hasEvents);
+		//std::unique_lock<std::mutex> lck(mtx);
+		//cv.wait(lck, hasEvents);
 		
 		while (hasWaitingEvent()) {
 			BenEvent* event = getNextEvent();

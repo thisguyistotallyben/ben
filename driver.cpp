@@ -70,32 +70,32 @@ int main() {
 
 	ben.start();
 	ben.hideCursor();
-	// std::cin.ignore();
+
 	ben.createWidget(
 		"box1",
 		BEN_BOX,
 		10, 10,
 		0, 0
-	);
+	).show();
+
+	// std::cin.ignore();
+
 	ben.createWidget(
 		"box2",
 		BEN_BOX,
 		10, 10,
 		10, 10
-	);
+	).show();
+
+	// std::cin.ignore();
+
 	ben.createWidget(
 		"box3",
 		BEN_BOX,
 		10, 10,
 		20, 20
-	);
+	).show();
 
-	std::cin.ignore();
-	ben.widget("box1").show();
-	// std::cin.ignore();
-	ben.widget("box2").show();
-	// std::cin.ignore();
-	ben.widget("box3").show();
 	std::cin.ignore();
 
 	ben.stop();
