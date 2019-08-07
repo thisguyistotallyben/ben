@@ -62,7 +62,7 @@ void BenServer::serve() {
 }
 
 void BenServer::stop() {
-	BenEvent* dieEvent;
+	BenEvent* dieEvent = new BenEvent();
 	dieEvent->eventType = DIE;
 	addEvent(dieEvent);
 	eventHandlerThread->join();
