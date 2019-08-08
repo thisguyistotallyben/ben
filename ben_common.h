@@ -16,6 +16,7 @@ enum BenBorderType {
 
 enum BenEventType {
 	SHOW_HIDE,
+	MODIFY,
 	DIE
 };
 
@@ -37,6 +38,7 @@ public:
 
 	void show();
 	void hide();
+	void move(int posX, int posY);
 };
 
 

@@ -53,6 +53,9 @@ void BenServer::performEvent(BenEvent* event) {
 				bv->hideWidget(event->widget);
 			}
 			break;
+		case MODIFY:
+			// figure out how to move windows
+			break;
 		default: break;
 	}
 }
