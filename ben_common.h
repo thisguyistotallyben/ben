@@ -36,6 +36,7 @@ public:
 	PANEL *panel;
 
 	void show();
+	void hide();
 };
 
 

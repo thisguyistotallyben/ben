@@ -9,3 +9,11 @@ void BenWidget::show() {
 	event->widget = this;
 	BenServer::Instance()->addEvent(event);
 }
+
+void BenWidget::hide() {
+	BenEvent* event = new BenEvent();
+	event->eventType = SHOW_HIDE;
+	event->visible = false;
+	event->widget = this;
+	BenServer::Instance()->addEvent(event);
+}

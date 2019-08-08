@@ -78,8 +78,6 @@ int main() {
 		0, 0
 	)->show();
 
-	// std::cin.ignore();
-
 	ben.createWidget(
 		"box2",
 		BEN_BOX,
@@ -87,14 +85,16 @@ int main() {
 		0, 3
 	)->show();
 
-	// std::cin.ignore();
-
 	ben.createWidget(
 		"box3",
 		BEN_BOX,
 		15, 13,
 		30, 0
 	)->show();
+
+	std::cin.ignore();
+
+	ben.widget("box3")->hide();
 
 	std::cin.ignore();
 
