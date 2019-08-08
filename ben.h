@@ -11,7 +11,7 @@ public:
 	void start();
 	void stop();
 
-	BenWidget createWidget(std::string lookup, BenWidgetType, int sizex, int sizey, int posx, int posy);
-	BenWidget widget(std::string lookup);
+	BenWidget* createWidget(std::string lookup, BenWidgetType, int sizex, int sizey, int posx, int posy);
+	BenWidget* widget(std::string lookup);
 	void hideCursor();
 };

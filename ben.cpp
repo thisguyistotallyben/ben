@@ -21,7 +21,7 @@ void Ben::hideCursor() {
 	BenView::Instance()->hideCursor();
 }
 
-BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int sizeX, int sizeY, int posX, int posY) {
+BenWidget* Ben::createWidget(std::string lookup, BenWidgetType widgetType, int sizeX, int sizeY, int posX, int posY) {
 	BenWidget* widget = new BenWidget();
 	widget->lookup = lookup;
 	widget->sizeX = sizeX;
@@ -33,10 +33,9 @@ BenWidget Ben::createWidget(std::string lookup, BenWidgetType widgetType, int si
 
 	BenView::Instance()->insertWidget(widget);
 
-	return *widget;
+	return widget;
 }
 
-BenWidget Ben::widget(std::string lookup) {
-	BenWidget* w = BenView::Instance()->getWidget(lookup);
-	return *w;
+BenWidget* Ben::widget(std::string lookup) {
+	return BenView::Instance()->getWidget(lookup);
 }

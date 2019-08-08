@@ -74,27 +74,27 @@ int main() {
 	ben.createWidget(
 		"box1",
 		BEN_BOX,
-		10, 10,
+		30, 3,
 		0, 0
-	).show();
+	)->show();
 
 	// std::cin.ignore();
 
 	ben.createWidget(
 		"box2",
 		BEN_BOX,
-		10, 10,
-		10, 10
-	).show();
+		30, 10,
+		0, 3
+	)->show();
 
 	// std::cin.ignore();
 
 	ben.createWidget(
 		"box3",
 		BEN_BOX,
-		10, 10,
-		20, 20
-	).show();
+		15, 13,
+		30, 0
+	)->show();
 
 	std::cin.ignore();
 
