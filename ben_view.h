@@ -18,6 +18,9 @@ public:
 	bool isActive();
 	void updateView();
 	void hideCursor();
+
+	int getMaxHeight();
+	int getMaxWidth();
 private:
 	BenView() {};
 	BenView(BenView const&) {};

@@ -15,6 +15,7 @@ BenView* bv = BenView::Instance();
 BenServer* BenServer::Instance() {
 	if (bs_Singleton_Instance == NULL) {
 		bs_Singleton_Instance = new BenServer();
+		bs_Singleton_Instance->serve();
 	}
 	return bs_Singleton_Instance;
 }
@@ -46,7 +47,7 @@ void BenServer::performEvent(BenEvent* event) {
 
 	switch(event->eventType) {
 		case SHOW_HIDE:
-			if (event->visible) {
+			if (event->widget->visible) {
 				bv->showWidget(event->widget);
 			}
 			else {

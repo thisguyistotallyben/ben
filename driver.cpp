@@ -72,24 +72,38 @@ int main() {
 	ben.hideCursor();
 
 	ben.createWidget(
+		"header",
+		BEN_BOX,
+		ben.maxWidth(), 3,
+		0, 0
+	)->show();
+
+	ben.createWidget(
+		"footer",
+		BEN_BOX,
+		ben.maxWidth(), 3,
+		0, ben.maxHeight() - 3
+	)->show();
+
+	ben.createWidget(
 		"box1",
 		BEN_BOX,
 		30, 3,
-		0, 0
+		0, 3
 	)->show();
 
 	ben.createWidget(
 		"box2",
 		BEN_BOX,
 		30, 10,
-		0, 3
+		0, 6
 	)->show();
 
 	ben.createWidget(
 		"box3",
 		BEN_BOX,
-		15, 13,
-		30, 0
+		5, 5,
+		27, 3
 	)->show();
 
 	std::cin.ignore();

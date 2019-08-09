@@ -8,7 +8,6 @@
 void Ben::start() {
 	std::cout << "greetings, planet\n";
 	BenView::Instance()->startCurses();
-	BenServer::Instance()->serve();
 }
 
 void Ben::stop() {
@@ -38,4 +37,12 @@ BenWidget* Ben::createWidget(std::string lookup, BenWidgetType widgetType, int s
 
 BenWidget* Ben::widget(std::string lookup) {
 	return BenView::Instance()->getWidget(lookup);
+}
+
+int Ben::maxHeight() {
+	return BenView::Instance()->getMaxHeight();
+}
+
+int Ben::maxWidth() {
+	return BenView::Instance()->getMaxWidth();
 }

@@ -44,14 +44,5 @@ public:
 
 struct BenEvent {
 	BenEventType eventType;
-
 	BenWidget* widget;
-	std::string lookup;
-	BenBorderType borderType;
-	int sizex;
-	int sizey;
-	int posx;
-	int posy;
-
-	bool visible;
 };

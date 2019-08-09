@@ -3,17 +3,19 @@
 
 
 void BenWidget::show() {
+	this->visible = true;
+
 	BenEvent* event = new BenEvent();
 	event->eventType = SHOW_HIDE;
-	event->visible = true;
 	event->widget = this;
 	BenServer::Instance()->addEvent(event);
 }
 
 void BenWidget::hide() {
+	this->visible = false;
+
 	BenEvent* event = new BenEvent();
 	event->eventType = SHOW_HIDE;
-	event->visible = false; // TODO: this is silly and should belong only on the widget
 	event->widget = this;
 	BenServer::Instance()->addEvent(event);
 }

@@ -84,3 +84,11 @@ void BenView::hideWidget(BenWidget* widget) {
 	hide_panel(widget->panel);
 	updateView();
 }
+
+int BenView::getMaxHeight() {
+	return LINES;
+}
+
+int BenView::getMaxWidth() {
+	return COLS;
+}
