@@ -17,6 +17,7 @@ enum BenBorderType {
 enum BenEventType {
 	SHOW_HIDE,
 	MODIFY,
+	MOVE,
 	DIE
 };
 

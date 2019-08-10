@@ -13,6 +13,7 @@ public:
 	void insertWidget(BenWidget* widget);
 	void showWidget(BenWidget* widget);
 	void hideWidget(BenWidget* widget);
+	void moveWidget(BenWidget* widget);
 	BenWidget* getWidget(std::string lookup);
 
 	bool isActive();
@@ -21,6 +22,7 @@ public:
 
 	int getMaxHeight();
 	int getMaxWidth();
+
 private:
 	BenView() {};
 	BenView(BenView const&) {};

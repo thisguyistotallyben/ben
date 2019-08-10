@@ -85,6 +85,12 @@ void BenView::hideWidget(BenWidget* widget) {
 	updateView();
 }
 
+void BenView::moveWidget(BenWidget* widget) {
+	wmove(widget->win, widget->posX, widget->posY);
+	wrefresh(widget->win);
+	updateView();
+}
+
 int BenView::getMaxHeight() {
 	return LINES;
 }

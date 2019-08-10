@@ -108,6 +108,12 @@ int main() {
 
 	std::cin.ignore();
 
+	BenWidget* w = ben.widget("box3");
+	for (int i = 0; i < 5; i++) {
+		w->move(w->posX + 1, w->posY); // does not work yet
+		std::cin.ignore();
+	}
+
 	ben.widget("box3")->hide();
 
 	std::cin.ignore();

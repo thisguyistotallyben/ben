@@ -25,7 +25,7 @@ void BenWidget::move(int posX, int posY) {
 	this->posY = posY;
 
 	BenEvent* event = new BenEvent();
-	event->eventType = MODIFY;
+	event->eventType = MOVE;
 	event->widget = this;
 	BenServer::Instance()->addEvent(event);
 }
